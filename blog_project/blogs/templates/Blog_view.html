@@ -1,0 +1,61 @@
+{% extends 'master/base.html' %}
+
+{% block title %}
+    Blog View
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>All Blogs</h1>
+
+    <div class="row">
+
+        {% for blog in blog_data %}
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+
+                {% if blog.blog_image %}
+                    <img src="{{ blog.blog_image.url }}"
+                         class="card-img-top"
+                         alt="{{ blog.title }}">
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        <strong>Title:</strong>
+                        {{ blog.title }}
+                    </h5>
+
+                    <p class="card-text">
+                        <strong>Content:</strong>
+                        {{ blog.content }}
+                    </p>
+
+                    <p>
+                        <strong>Author:</strong>
+                        {{ blog.author_name }}
+                    </p>
+
+                    <p>
+                        <strong>Category:</strong>
+                        {{ blog.category }}
+                    </p>
+                    <a href="{% url 'Blog_list' %}" class="btn btn-info">Back Blog List Page</a>
+
+                </div>
+            </div>
+        </div>
+
+        {% empty %}
+
+            <p>No blog found.</p>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

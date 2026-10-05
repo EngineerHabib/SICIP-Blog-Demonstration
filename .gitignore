@@ -1,0 +1,13 @@
+.env
+BlogEnv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+.vscode/
+.idea/

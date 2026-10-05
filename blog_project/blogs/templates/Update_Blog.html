@@ -1,0 +1,50 @@
+{% extends 'master/base.html' %}
+{% block title %}
+  Update Blog
+{% endblock %}
+
+{% block content %}
+  <h1>Update Blog</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">title</label>
+      <input type="text" class="form-control" name="title" value="{{blog_data.title}}" id="exampleInputEmail1" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">author_name</label>
+      <input type="text" class="form-control" name="author_name" value="{{ blog_data.author_name }}" id="exampleInputEmail1" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">content</label>
+      <textarea name="content" id="" class="form-control">{{blog_data.content}}</textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">category</label>
+      <select name="category" id="">
+        <option value="Educational"
+        {% if blog_data.category == 'Educational' %}
+        selected
+        {% endif %}
+        >Educational</option>
+        <option value="Technologies"
+        {% if blog_data.category == 'Technologies' %}
+        selected
+        {% endif %}
+        >Technologies</option>
+        <option value="Sports"
+        {% if blog_data.category == 'Sports' %}
+        selected
+        {% endif %}
+        >Sports</option>
+      </select>     
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">blog_image</label>
+      <input type="file" class="form-control" name="blog_image"  id="exampleInputPassword1" />
+      <img src="/{{ i.blog_image }}" width="50px" height="60px" alt="" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

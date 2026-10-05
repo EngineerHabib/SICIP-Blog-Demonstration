@@ -1,0 +1,37 @@
+{% extends 'master/base.html' %}
+{% block title %}
+  Add Blog
+{% endblock %}
+
+{% block content %}
+  <h1>Add Blog Page</h1>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">title</label>
+      <input type="text" class="form-control" name="title" id="exampleInputEmail1" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">author_name</label>
+      <input type="text" class="form-control" name="author_name" id="exampleInputEmail1" aria-describedby="emailHelp" />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">content</label>
+      <textarea name="content" id="" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">category</label>
+      <select name="category" id="">
+        <option value="Educational">Educational</option>
+        <option value="Technologies">Technologies</option>
+        <option value="Sports">Sports</option>
+      </select>     
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">blog_image</label>
+      <input type="file" class="form-control" name="blog_image" id="exampleInputPassword1" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
